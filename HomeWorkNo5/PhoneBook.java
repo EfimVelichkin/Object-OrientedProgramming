@@ -23,18 +23,4 @@ public class PhoneBook extends Metods{
         phonebook.exportContacts(contacts, "phoneBook.csv");
         phonebook.importContacts("PhoneBook.csv");
     }
-
-    public void createTable() {
-        try {
-            Class.forName("org.sqlite.JDBC");
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:phonebook.db");
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS contacts (id INTEGER PRIMARY KEY, name TEXT, phone TEXT, email TEXT)");
-            statement.close();
-            connection.close();
-        } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
-            System.exit(0);
-        }
-    }
 }
